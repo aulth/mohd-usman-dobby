@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import '../styles/globals.css'
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -64,6 +65,11 @@ function MyApp({ Component, pageProps }) {
 
   //images fetching end
   return <>
+  <Head>
+  <title>Dobby</title>
+        <meta name="description" content="upload your images" />
+        <link rel="icon" href="/favicon.ico" />
+  </Head>
     <Navbar images={images} setSearchedImage={setSearchedImage} toggleUpload={toggleUpload} logout={logout} isLoggedIn={isLoggedIn} />
     <Component images={images} searchedImage={searchedImage} uploadClicked={uploadClicked} setLoginTrue={setLoginTrue}   {...pageProps} />
   </>

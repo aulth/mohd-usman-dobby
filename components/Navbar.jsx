@@ -37,8 +37,8 @@ const Navbar = ({
       }
     }
     const uniqueSearchImages = Array.from(new Set(newImages.map((a) => a.url))).map((url) => {
-        return newImages.find((a) => a.url === url);
-      }
+      return newImages.find((a) => a.url === url);
+    }
     );
     setSearchedImage(uniqueSearchImages);
     router.push("/search");
@@ -82,7 +82,7 @@ const Navbar = ({
           {!isLoggedIn && (
             <>
               <Link href={"/login"}>
-                <button className="mx-2 md:block hidden hover:bg-[#111827] border rounded hover:border-[#111827] border-transparent p-2 cursor-pointer flex items-center">
+                <button className="mx-2 md:flex hidden hover:bg-[#111827] border rounded hover:border-[#111827] border-transparent p-2 cursor-pointer items-center">
                   Login
                 </button>
               </Link>
@@ -115,13 +115,13 @@ const Navbar = ({
       </div>
       <div id="menu" className="hidden">
         <div className="container m-auto flex flex-col justify-center p-2 md:hidden bg-[#1F2937] text-[#CCD0D6]">
-          <div className="flex w-full  items-center bg-[#374151] text-[#8F96A3] mr-5 rounded px-2 py-1 my-1">
+          <form onSubmit={handleOnSearch} className="flex w-full  items-center bg-[#374151] text-[#8F96A3] mr-5 rounded px-2 py-1 my-1">
             <CiSearch className="text-xl" />
             <input
-              type="search"
+              type="search" onChange={captureQuery}
               className="border-none focus:outline-none bg-transparent pl-1 w-full"
             />
-          </div>
+          </form>
           <ul className="flex flex-col items-start ">
             <button className="w-full my-1 rounded border border-transparent hover:bg-[#111827] hover:border-[#111827] p-1 cursor-pointer flex items-center">
               Dashboard
